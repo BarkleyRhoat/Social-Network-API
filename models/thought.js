@@ -38,7 +38,8 @@ const thoughtSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  reactions: [reactionSchema]
+  reactions: [reactionSchema],
+  reactions: [thoughtSchema]
 });
 
-// Virtual to get the length of the reactions array in Thought m
+

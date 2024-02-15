@@ -22,7 +22,7 @@ const reactionSchema = new mongoose.Schema({
 
 // Getter method for formatting the timestamp on query
 reactionSchema.path('createdAt').get(function(value) {
-  // Customize the timestamp formatting as needed
+  
   return value.toLocaleString();
 });
 

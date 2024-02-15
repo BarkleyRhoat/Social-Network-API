@@ -12,18 +12,18 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
     match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    // You can adjust the email validation regex as needed
+    //regex
   },
   thoughts: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Thought' // Assuming there is a 'Thought' model
+      ref: 'Thought' //  'Thought' model
     }
   ],
   friends: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User' // Assuming the same model is used for friends
+      ref: 'User' // for friends
     }
   ]
 });
