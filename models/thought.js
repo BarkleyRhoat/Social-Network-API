@@ -1,45 +1,42 @@
-const mongoose = require('mongoose');
-
-// Reaction schema for nested documents
-const reactionSchema = new mongoose.Schema({
-  thoughtText: {
-    type: String,
-    required: true,
-    minlength: 1,
-    maxlength: 280
+const { Schema, model } = require('mongoose');
+const reactionSchema = require('./reaction');
+const thoughtSchema = new Schema(
+  {
+    thoughtText: {
+      type: String,
+      required: true,
+      minlength: 1,
+      maxlength: 280,
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now, // default set to the current timestamp
+      get: timestamp => new Date(timestamp).toLocaleString(), 
+    },
+    username: {
+      type: String,
+      required: true,
+    },
+    reactions: [reactionSchema], 
+  }, 
+  {
+    toJSON: { 
+      getters: true,
+      virtuals: true,
+    },
+    id: false, 
   },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
-  username: {
-    type: String,
-    required: true
-  }
-});
+);
 
-// Virtual to get the length of the reactions array in Thought model
-reactionSchema.virtual('reactionCount').get(function() {
+
+thoughtSchema.virtual('reactionCount').get(function () {
   return this.reactions.length;
 });
 
-const thoughtSchema = new mongoose.Schema({
-  thoughtText: {
-    type: String,
-    required: true,
-    minlength: 1,
-    maxlength: 280
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
-  username: {
-    type: String,
-    required: true
-  },
-  reactions: [reactionSchema],
-  // reactions: [thoughtSchema]
-});
+
+const Thought = model('thought', thoughtSchema); 
+
+
+module.exports = Thought;
 
 

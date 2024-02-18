@@ -1,38 +1,49 @@
-const mongoose = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 
-const userSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    unique: true,
-    required: true,
-    trim: true
+
+const userSchema = new Schema(
+  {
+    username: {
+      type: String,
+      unique: true,
+      required: true,
+      trim: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      match: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+    },
+    
+    thoughts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Thought',
+      },
+    ],
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+      },
+    ],
   },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    //regex
+  {
+    toJSON: {
+      virtuals: true, 
+    },
+    id: false, 
   },
-  thoughts: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Thought' //  'Thought' model
-    }
-  ],
-  friends: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User' // for friends
-    }
-  ]
+);
+
+
+userSchema.virtual('friendCount').get(function () {
+  return this.friends.length;
 });
 
-const User = mongoose.model('User', userSchema);
 
-// const user = await User.findOne({ /* your query criteria */ }).populate('friends');
+const User = model('user', userSchema);
 
-// console.log(user.friendCount); // This will give you the length of the friends array
-
-
-module.exports = User;
+// exports the User model so that it can be used in other parts of the application
+module.exports = User; 
