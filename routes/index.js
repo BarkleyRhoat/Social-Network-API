@@ -3,8 +3,7 @@ const apiRoutes = require('./api');
 
 router.use('./api', apiRoutes);
 
-router.use((req,res) => {
-    return res.send('Invalid Route');
-});
+router.use((req, res) => res.send("invalid route!"));
+
 
 module.exports = router;
