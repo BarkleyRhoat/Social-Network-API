@@ -30,9 +30,9 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-const user = await User.findOne({ /* your query criteria */ }).populate('friends');
+// const user = await User.findOne({ /* your query criteria */ }).populate('friends');
 
-console.log(user.friendCount); // This will give you the length of the friends array
+// console.log(user.friendCount); // This will give you the length of the friends array
 
 
 module.exports = User;

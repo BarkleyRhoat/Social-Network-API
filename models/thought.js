@@ -39,7 +39,7 @@ const thoughtSchema = new mongoose.Schema({
     required: true
   },
   reactions: [reactionSchema],
-  reactions: [thoughtSchema]
+  // reactions: [thoughtSchema]
 });
 
 
