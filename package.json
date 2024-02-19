@@ -6,9 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "watch": "nodemon server.js"
+    "watch": "nodemon server.js",
+    "seed": "node utils/seed"
   },
-  "author": "",
+  "author": "Barkley Rhoat",
   "license": "MIT",
   "dependencies": {
     "express": "^4.18.2",
