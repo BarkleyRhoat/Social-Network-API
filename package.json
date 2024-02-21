@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "watch": "nodemon server.js",
-    "seed": "node utils/seed"
+    "seed": "node seeds/mainSeeds.js"
+    
+    
   },
   "author": "Barkley Rhoat",
   "license": "MIT",

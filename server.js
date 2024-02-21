@@ -1,8 +1,8 @@
 const express = require('express');
 const db = require("./config/connection");
 const routes = require("./routes");
-const {User} = require("./models/user.js")
-// const seed = require("/seeds/mainSeeds.js")
+// const {User} = require("./models/user.js")
+
 
 const PORT = 3001;
 const app = express();
