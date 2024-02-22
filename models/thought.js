@@ -10,7 +10,7 @@ const thoughtSchema = new Schema(
     },
     createdAt: {
       type: Date,
-      default: Date.now, // default set to the current timestamp
+      default: Date.now, 
       get: timestamp => new Date(timestamp).toLocaleString(), 
     },
     username: {

@@ -1,4 +1,3 @@
-// import necessary components from the mongoose library. Schema is used to define the structure of the document, and Types provides access to Mongoose's ObjectId data type.
 const { Schema, Types } = require('mongoose'); 
 
 // Reaction Schema
@@ -19,15 +18,15 @@ const reactionSchema = new Schema(
     },
     createdAt: {
       type: Date,
-      default: Date.now, // default value set to the current timestamp
-      get: timestamp => new Date(timestamp).toLocaleString(), // getter method to format the timestamp on query
+      default: Date.now, // default value 
+      get: timestamp => new Date(timestamp).toLocaleString(),
     },
   },
   {
-    toJSON: { // specifies how the document should be transformed when converted to JSON. In this case, it enables getters
+    toJSON: { 
       getters: true,
     },
-    id: false, // disables the inclusion of the default _id field in the document
+    id: false, 
   }
 );
 

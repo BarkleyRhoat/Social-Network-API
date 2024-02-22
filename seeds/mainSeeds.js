@@ -10,10 +10,10 @@ mongoose.connect('mongodb://127.0.0.1:27017/socialMediaDB', {
 });
 
 // Use the User model schema
-const User = require('../models/user');
+const User = require('../models/User');
 
 // Use the Thought model schema
-const Thought = require('../models/thought');
+const Thought = require('../models/Thought');
 
 // Use the Reaction model schema
 const Reaction = mongoose.model('Reaction', reactionSchema);

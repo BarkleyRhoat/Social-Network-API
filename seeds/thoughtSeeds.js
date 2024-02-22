@@ -1,4 +1,4 @@
-const {Thought} = require('../models/thought');
+const {Thought} = require('../models/Thought');
 const thoughtsSeed = [
     {
       thoughtText: 'This is a sample thought.',

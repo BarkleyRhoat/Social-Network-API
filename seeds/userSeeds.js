@@ -1,4 +1,4 @@
-const {User} = require('../models/user');
+const {User} = require('../models/User');
 const usersSeed = [
     {
       username: 'john_doe',
